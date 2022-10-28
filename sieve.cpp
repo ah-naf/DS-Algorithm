@@ -1,5 +1,7 @@
 vector<ll> primes;
 vector<bool> bs(MAX+5, true);
+
+
 void sieve()
 {
     for(ll i=4; i<=MAX; i+=2)
