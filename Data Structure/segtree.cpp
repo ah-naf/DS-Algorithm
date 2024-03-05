@@ -35,6 +35,8 @@ struct segtree {
     int R = query(r, mid + 1, e, i, j);
     return max(L, R);
   }
+
+
 };
 
 void solve(int tc) {
