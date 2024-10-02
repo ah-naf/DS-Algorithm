@@ -1,18 +1,22 @@
+vp G[N];
+vll dist(N, 1e15);
+vector<bool> vis(N);
+
 void dijkstra(int n) {
     dist[n] = 0;
     priority_queue<pair<ll,ll>, vp, greater<pair<ll, ll>>> q;
     q.push({0, n});
     while(!q.empty()) {
-        int cur_n = q.top().ss;
-        int cur_dist = q.top().ff;
+        ll cur_n = q.top().ss;
+        ll cur_dist = q.top().ff;
         q.pop();
-        if(cur_dist != dist[cur_n]) continue;
+        if(vis[cur_n]) continue;
+        vis[cur_n] = true;
+
         for(auto it: G[cur_n]) {
-            int next_n = it.ff;
-            int next_d = it.ss;
-            if(dist[cur] + next_d < dist[next_n]) {
-                dist[next_n] = dist[cur] + next_d;
-                q.push({dist[next_n], next_n});
+            if(cur_dist + it.ss < dist[it.ff]) {
+                dist[it.ff] = cur_dist + it.ss;
+                q.push({dist[it.ff], it.ff});
             }
         }
     }
